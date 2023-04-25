@@ -25,4 +25,6 @@ jobs:
       run: dotnet publish -c Release --output ./Release
     - name: Run ls command
       run: |
-        ls D:\a\Final-Backend-Dotnet\Final-Backend-Dotnet\Release\    
+        ls D:\a\Final-Backend-Dotnet\Final-Backend-Dotnet\Release\ 
+    - name: Zip artifact for deployment
+      run: zip Release.zip ./* -r
