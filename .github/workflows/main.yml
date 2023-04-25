@@ -27,4 +27,9 @@ jobs:
       run: |
         ls D:\a\Final-Backend-Dotnet\Final-Backend-Dotnet\Release\ 
     - name: Zip artifact for deployment
-      run: zip Release.zip ./* -r
+      run: zip Release.zip D:\a\Final-Backend-Dotnet\Final-Backend-Dotnet\Release\* -r
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: Dot-Net-App
+        path: Release.zip
