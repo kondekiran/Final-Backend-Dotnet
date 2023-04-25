@@ -39,6 +39,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: Eshop
           environment_name: Eshop-env
+          version_label: 6.0
           region: us-east-1
           deployment_package: Release.zip
         
