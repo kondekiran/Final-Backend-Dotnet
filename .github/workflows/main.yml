@@ -22,10 +22,5 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish SimpleFeedReader/SimpleFeedReader.csproj -c Release -o website
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: website
-        path: SimpleFeedReader/website/**
-        if-no-files-found: error
+      run: dotnet publish -c Release --output ./Release
+    
