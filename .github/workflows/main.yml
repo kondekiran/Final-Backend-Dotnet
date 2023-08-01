@@ -21,7 +21,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run Snyk to check for vulnerabilities
-      uses: snyk/actions/node@master
+      uses: snyk/actions/dotnet@master
       env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
