@@ -19,13 +19,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Run Snyk to check for vulnerabilities
-      uses: snyk/actions/dotnet@master
-      env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-          command: monitor  
+      run: dotnet build --no-restore  
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
@@ -39,12 +33,13 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         path: Release.zip
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v1
-      with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: Eshop
+    - uses: contentful/actions-app-deploy@v1
+  with:
+    organization-id: ${{ secrets.ORGANIZATION_ID }}
+    app-definition-id: ${{ secrets.APP_DEFINITION_ID }}
+    access-token: ${{ secrets.ACCESS_TOKEN }}
+    folder: build   
+    
           environment_name: Eshop-env
           version_label: ${{ github.run_id }}
           region: us-east-1
