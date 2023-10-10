@@ -1,4 +1,4 @@
-# add synk tool
+
 name: Deploy master
 on:
   push:
